@@ -16,7 +16,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navOptions
 import coil.compose.rememberImagePainter
 import coil.request.ImageRequest
 import coil.request.ImageResult
@@ -65,17 +64,8 @@ fun StartPage(navController: NavController) {
             if (showButton) {
                 Button(
                     onClick = {
-                        val navOption = navOptions {
 
-                            anim {
-                                enter = R.anim.nav_default_enter_anim
-                                exit = R.anim.nav_default_exit_anim
-                                popEnter = R.anim.nav_default_pop_enter_anim
-                                popExit = R.anim.nav_default_pop_exit_anim
-                            }
-                        }
                         navController.navigate("main")
-//                            findNavController().navigate(R.id.mainFragment, null, navOption)
                     },
                     shape = RoundedCornerShape(15.dp),
                     modifier = Modifier

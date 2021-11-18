@@ -91,6 +91,8 @@ dependencies {
 
     implementation "androidx.navigation:navigation-compose:2.4.0-beta02"
 
+    // https://github.com/google/accompanist/tree/main/insets
+    implementation "com.google.accompanist:accompanist-insets:0.21.2-beta"
     // Jetpack Compose Integration
 //    implementation "androidx.navigation:navigation-compose:"
 }
