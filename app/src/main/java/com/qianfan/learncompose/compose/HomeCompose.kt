@@ -7,18 +7,20 @@ import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.ImagePainter
+import com.google.accompanist.insets.statusBarsPadding
 import com.qianfan.learncompose.theme.Divider
 
 @Composable
-fun HomePage(navController: NavController) {
-    Box(
+fun HomePage(navController: NavController,painter: ImagePainter) {
+    Column(
         Modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(MaterialTheme.colors.primary)
     ) {
-        TopBar("化龙巷")
+        TopBar("化龙巷",painter)
     }
 }

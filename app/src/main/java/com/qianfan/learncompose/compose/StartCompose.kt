@@ -36,22 +36,16 @@ fun StartPage(navController: NavController) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1.0f)
+                .weight(5.5f)
         ) {
             Image(
                 painter = rememberImagePainter(
                     "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg3.doubanio.com%2Fview%2Fgroup_topic%2Fl%2Fpublic%2Fp155015141.jpg&refer=http%3A%2F%2Fimg3.doubanio.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1639724790&t=0ccb245151ddcd85da741414cb3f4358",
                     builder = {
-                        crossfade(true)
-                        listener(object : ImageRequest.Listener {
-                            override fun onSuccess(
-                                request: ImageRequest,
-                                metadata: ImageResult.Metadata
-                            ) {
-                                super.onSuccess(request, metadata)
-                                showButton = true
-                            }
-                        })
+                        crossfade(300)
+                        listener { _, _ ->
+                            showButton = true
+                        }
                     }
                 ),
                 contentDescription = "image start",
@@ -78,14 +72,16 @@ fun StartPage(navController: NavController) {
             }
         }
 
+
         Image(
             painter = painterResource(id = R.mipmap.splash_ad_bg),
             contentDescription = "splash_ad_bg",
             modifier = Modifier
-                .wrapContentHeight()
+                .weight(1.0f)
                 .wrapContentWidth()
                 .align(Alignment.CenterHorizontally)
-                .padding(0.dp, 0.dp, 0.dp, 15.dp)
+                .padding(0.dp, 15.dp, 0.dp, 15.dp),
+            contentScale = ContentScale.FillHeight
         )
     }
 

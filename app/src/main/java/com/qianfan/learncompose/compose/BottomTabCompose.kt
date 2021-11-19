@@ -1,6 +1,7 @@
 package com.qianfan.learncompose.compose
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
@@ -15,11 +16,12 @@ import androidx.compose.ui.unit.sp
 import com.qianfan.learncompose.R
 
 @Composable
-fun BottomTab(currentPosition: MutableState<Int>) {
+fun BottomTab(currentPosition: MutableState<Int>, onClick: (Int) -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .background(Color.White)
     ) {
 
         val textSelectColor = Color(0xff2C97DE)
@@ -56,15 +58,18 @@ fun BottomTab(currentPosition: MutableState<Int>) {
             )
         )
 
+
         tabs.forEachIndexed { index, tabData ->
             Tab(
                 position = index,
-                currentPosition = currentPosition,
+                isSelect = index == currentPosition.value,
                 imgSelect = tabData.imgSelect,
                 imgUnSelect = tabData.imgUnSelect,
+                label = tabData.label,
                 textSelectColor = tabData.textSelectColor,
                 textUnSelectColor = tabData.textUnSelectColor,
-                modifier = Modifier.weight(1.0f)
+                modifier = Modifier.weight(1.0f),
+                onClick = onClick
             )
         }
     }
@@ -72,9 +77,9 @@ fun BottomTab(currentPosition: MutableState<Int>) {
 
 @Composable
 fun Tab(
-    position: Int, currentPosition: MutableState<Int>,
-    imgSelect: Int, imgUnSelect: Int, textSelectColor: Color,
-    textUnSelectColor: Color, modifier: Modifier
+    position: Int, isSelect: Boolean,
+    imgSelect: Int, imgUnSelect: Int, label: String, textSelectColor: Color,
+    textUnSelectColor: Color, modifier: Modifier, onClick: (Int) -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     Column(
@@ -85,14 +90,14 @@ fun Tab(
                 interactionSource = interactionSource,
                 indication = null
             ) {
-                currentPosition.value = position
+                onClick(position)
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         var img by remember { mutableStateOf(imgUnSelect) }
         var textColor by remember { mutableStateOf(textUnSelectColor) }
 
-        if (position == currentPosition.value) {
+        if (isSelect) {
             img = imgSelect
             textColor = textSelectColor
         } else {
@@ -101,7 +106,7 @@ fun Tab(
         }
 
         Image(painter = painterResource(id = img), contentDescription = "")
-        Text(text = "首页", color = textColor, fontSize = 11.sp)
+        Text(text = label, color = textColor, fontSize = 11.sp)
     }
 }
 
