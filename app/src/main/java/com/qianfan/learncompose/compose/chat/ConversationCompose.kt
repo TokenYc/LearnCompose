@@ -1,4 +1,4 @@
-package com.qianfan.learncompose
+package com.qianfan.learncompose.compose.chat
 
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -9,6 +9,8 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.qianfan.learncompose.compose.chat.Message
+import com.qianfan.learncompose.compose.chat.MsgCardCompose
 import com.qianfan.learncompose.theme.ComposeDemoTheme
 
 

@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     @Composable
     fun page() {
         val navController = rememberNavController()
-        NavHost(navController = navController, startDestination = "start") {
+        NavHost(navController = navController, startDestination = "main") {
 
             composable("start") {
                 StartPage(navController)

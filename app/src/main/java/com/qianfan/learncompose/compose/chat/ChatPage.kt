@@ -1,14 +1,12 @@
-package com.qianfan.learncompose.compose
+package com.qianfan.learncompose.compose.chat
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -17,10 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
-import com.google.accompanist.insets.statusBarsPadding
-import com.qianfan.learncompose.Conversation
 import com.qianfan.learncompose.R
-import com.qianfan.learncompose.messageList
+import com.qianfan.learncompose.compose.TopBar
 import com.qianfan.learncompose.theme.ComposeDemoTheme
 
 @Composable

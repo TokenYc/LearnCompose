@@ -1,26 +1,26 @@
-package com.qianfan.learncompose.compose
+package com.qianfan.learncompose.compose.pai
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.ImagePainter
 import com.google.accompanist.insets.statusBarsPadding
-import com.qianfan.learncompose.theme.Divider
+import com.qianfan.learncompose.compose.TopBar
 
 @Composable
-fun HomePage(navController: NavController,painter: ImagePainter) {
+fun PaiPage(navController: NavController, painter: ImagePainter) {
     Column(
         Modifier
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        TopBar("化龙巷",painter)
+        TopBar("巷友圈", painter)
     }
 }

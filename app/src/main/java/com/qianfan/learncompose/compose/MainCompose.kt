@@ -1,23 +1,16 @@
 package com.qianfan.learncompose.compose
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
@@ -27,6 +20,10 @@ import com.google.accompanist.insets.ProvideWindowInsets
 import com.google.accompanist.insets.statusBarsPadding
 import com.qianfan.learncompose.theme.ComposeDemoTheme
 import com.qianfan.learncompose.R
+import com.qianfan.learncompose.compose.chat.ChatPage
+import com.qianfan.learncompose.compose.chat.ChatViewModel
+import com.qianfan.learncompose.compose.home.HomePage
+import com.qianfan.learncompose.compose.pai.PaiPage
 import com.qianfan.learncompose.theme.Divider
 
 
@@ -43,7 +40,7 @@ fun MainPage(navController: NavController) {
             currentPosition.value = position
         }
 
-        val chatViewModel:ChatViewModel = viewModel()
+        val chatViewModel: ChatViewModel = viewModel()
         chatViewModel.lazyListState = rememberLazyListState()
 
         val painter = rememberImagePainter(
