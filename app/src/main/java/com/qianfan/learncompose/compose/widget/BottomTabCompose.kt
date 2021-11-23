@@ -1,15 +1,17 @@
-package com.qianfan.learncompose.compose
+package com.qianfan.learncompose.compose.widget
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,7 +26,7 @@ fun BottomTab(currentPosition: MutableState<Int>, onClick: (Int) -> Unit) {
             .background(Color.White)
     ) {
 
-        val textSelectColor = Color(0xff2C97DE)
+        val textSelectColor = MaterialTheme.colors.primary
         val textUnSelectColor = Color(0x66000000)
 
         val tabs = mutableListOf(
@@ -104,8 +106,11 @@ fun Tab(
             img = imgUnSelect
             textColor = textUnSelectColor
         }
-
-        Image(painter = painterResource(id = img), contentDescription = "")
+        Image(
+            painter = painterResource(id = img),
+            contentDescription = "",
+            colorFilter = ColorFilter.tint(textColor)
+        )
         Text(text = label, color = textColor, fontSize = 11.sp)
     }
 }

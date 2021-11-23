@@ -16,7 +16,7 @@ import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.qianfan.learncompose.R
-import com.qianfan.learncompose.compose.TopBar
+import com.qianfan.learncompose.compose.widget.TopBar
 import com.qianfan.learncompose.theme.ComposeDemoTheme
 
 @Composable

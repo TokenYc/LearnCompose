@@ -24,7 +24,8 @@ import com.qianfan.learncompose.compose.chat.ChatPage
 import com.qianfan.learncompose.compose.chat.ChatViewModel
 import com.qianfan.learncompose.compose.home.HomePage
 import com.qianfan.learncompose.compose.pai.PaiPage
-import com.qianfan.learncompose.theme.Divider
+import com.qianfan.learncompose.compose.widget.BottomTab
+import com.qianfan.learncompose.compose.widget.Divider
 
 
 @Composable
@@ -65,14 +66,7 @@ fun MainPage(navController: NavController) {
                 3 -> ChatPage(navController = navController,chatViewModel,painter)
             }
         }
-        Surface(
-            color = Divider,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(0.5.dp)
-        ) {
-
-        }
+        Divider()
         BottomTab(currentPosition, onTabClick)
     }
 }

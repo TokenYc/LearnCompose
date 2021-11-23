@@ -1,4 +1,4 @@
-package com.qianfan.learncompose.compose
+package com.qianfan.learncompose.compose.widget
 
 import androidx.compose.animation.fadeIn
 import androidx.compose.foundation.Image
