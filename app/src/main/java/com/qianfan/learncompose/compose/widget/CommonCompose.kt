@@ -1,12 +1,16 @@
 package com.qianfan.learncompose.compose.widget
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,9 +20,16 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
+import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.accompanist.pager.HorizontalPager
+import com.google.accompanist.pager.PagerState
+import com.google.accompanist.pager.rememberPagerState
 import com.qianfan.learncompose.R
 import com.qianfan.learncompose.theme.DividerColor
 import com.qianfan.learncompose.theme.TextGrey
+import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.concurrent.timerTask
 
 @Composable
 fun Divider(
@@ -179,8 +190,8 @@ fun ThreeImageInfo() {
 @Composable
 fun InfoFlowImage(url: String, corner: Dp = 5.dp, aspectRatio: Float = 1.39f, modifier: Modifier) {
     Surface(
-        shape = RoundedCornerShape(corner), modifier = modifier
-            .aspectRatio(aspectRatio)
+        shape = RoundedCornerShape(corner),
+        modifier = if (aspectRatio > 0) modifier.aspectRatio(aspectRatio) else modifier
     ) {
         Image(
             painter = rememberImagePainter(data = url,
@@ -191,4 +202,66 @@ fun InfoFlowImage(url: String, corner: Dp = 5.dp, aspectRatio: Float = 1.39f, mo
             contentScale = ContentScale.Crop
         )
     }
+}
+
+var timer: Timer? = null
+var timerTask: TimerTask? = null
+
+@SuppressLint("CoroutineCreationDuringComposition")
+@OptIn(ExperimentalPagerApi::class)
+@Composable
+fun InfoFlowViewpager(pagerState: PagerState) {
+
+
+    val pagerInfoList = mutableListOf(
+        "https://i0.hdslb.com/bfs/sycp/creative_img/202111/34e34b3edf3a90061f5a8cd97a841f88.jpg@880w_388h_1c_95q",
+        "https://i0.hdslb.com/bfs/feed-admin/b12a5c8e03b012f786e632129b9ab4706357d75e.jpg@880w_388h_1c_95q",
+        "https://i0.hdslb.com/bfs/feed-admin/6a76533770fa825ad89d180cd099f07b585994d4.jpg@880w_388h_1c_95q",
+    )
+    val pageCount = pagerInfoList.size
+
+    val startIndex = Int.MAX_VALUE / 2
+    Log.d("page","init currentPage startIndex:${startIndex}")
+//    val pagerState = rememberPagerState(startIndex)
+    val scope = rememberCoroutineScope()
+
+    Log.d("page","init currentPage:${pagerState.currentPage}")
+
+    timer?.cancel()
+    timerTask?.cancel()
+    timer = Timer()
+    timerTask = object : TimerTask() {
+        override fun run() {
+            scope.launch {
+                Log.d("page","currentPage:${pagerState.currentPage}")
+                pagerState.animateScrollToPage(pagerState.currentPage + 1)
+            }
+        }
+    }
+    timer?.schedule(timerTask, 2000, 2000)
+
+
+    HorizontalPager(
+        count = Int.MAX_VALUE, modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(1.9f)
+            .padding(top = 7.dp),
+        state = pagerState
+    ) { index ->
+
+        val page = (index - startIndex).floorMod(pageCount)
+        InfoFlowImage(
+            url = pagerInfoList[page],
+            modifier = Modifier
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            corner = 8.dp,
+            aspectRatio = 0.0f
+        )
+    }
+}
+
+private fun Int.floorMod(other: Int): Int = when (other) {
+    0 -> this
+    else -> this - floorDiv(other) * other
 }

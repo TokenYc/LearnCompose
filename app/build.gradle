@@ -93,6 +93,7 @@ dependencies {
 
     // https://github.com/google/accompanist/tree/main/insets
     implementation "com.google.accompanist:accompanist-insets:0.21.2-beta"
+    implementation "com.google.accompanist:accompanist-pager:0.21.3-beta"
     // Jetpack Compose Integration
 //    implementation "androidx.navigation:navigation-compose:"
 }

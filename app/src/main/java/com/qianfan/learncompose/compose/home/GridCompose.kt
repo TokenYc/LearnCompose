@@ -27,7 +27,7 @@ fun Grid(
         .wrapContentHeight()
 ) {
     val gridItems = mutableListOf<GridItem>()
-    for (i in 0..11) {
+    for (i in 0..7) {
         gridItems.add(
             GridItem(
                 "https://c-ssl.duitang.com/uploads/item/202106/24/20210624211645_kdoqi.thumb.300_300_c.jpg_webp",

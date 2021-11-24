@@ -1,4 +1,4 @@
-package com.qianfan.learncompose.compose
+package com.qianfan.learncompose.compose.forum
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight

@@ -16,6 +16,6 @@ fun PaiPage(navController: NavController, painter: ImagePainter) {
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        TopBar("巷友圈", painter)
+        TopBar("娱乐圈", painter)
     }
 }
