@@ -36,7 +36,7 @@ import kotlin.concurrent.timerTask
 @Composable
 fun HomePage(navController: NavController, painter: ImagePainter) {
     val startIndex = Int.MAX_VALUE / 2
-    val pagerState = rememberPagerState(startIndex)
+//    val pagerState = rememberPagerState(startIndex)
     Column(
         Modifier
             .fillMaxWidth()
@@ -51,7 +51,7 @@ fun HomePage(navController: NavController, painter: ImagePainter) {
         ) {
             item {
 
-                InfoFlowViewpager(pagerState)
+                InfoFlowViewpager()
                 Grid(
                     horizontalPadding = 14.dp,
                     verticalPadding = 10.dp,

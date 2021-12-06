@@ -210,7 +210,7 @@ var timerTask: TimerTask? = null
 @SuppressLint("CoroutineCreationDuringComposition")
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun InfoFlowViewpager(pagerState: PagerState) {
+fun InfoFlowViewpager() {
 
 
     val pagerInfoList = mutableListOf(
@@ -222,7 +222,7 @@ fun InfoFlowViewpager(pagerState: PagerState) {
 
     val startIndex = Int.MAX_VALUE / 2
     Log.d("page","init currentPage startIndex:${startIndex}")
-//    val pagerState = rememberPagerState(startIndex)
+    val pagerState = rememberPagerState(startIndex)
     val scope = rememberCoroutineScope()
 
     Log.d("page","init currentPage:${pagerState.currentPage}")
